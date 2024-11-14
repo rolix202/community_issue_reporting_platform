@@ -20,13 +20,15 @@ This is a full-stack web application that allows users to report community issue
 
 ## Setup and Installation
 
-1. **Clone the repository:**
+1.  **Clone the repository:**
+
     ```bash
-    git clone https://github.com/your-username/your-repo.git
+    git clone https://github.com/rolix202/community_issue_reporting_platform.git
     cd your-repo
     ```
 
-2. **Install dependencies:**
+2.  **Install dependencies:**
+
     - **Backend**:
       ```bash
       cd server
@@ -38,10 +40,21 @@ This is a full-stack web application that allows users to report community issue
       npm install
       ```
 
-3. **Set up environment variables:**
+3.  **Set up environment variables:**
     Create a `.env` file in the `server` directory and add your environment variables as needed (e.g., API keys, database URIs).
 
-4. **Run the development server:**
+    ```bash
+    NODE_ENV=
+    PORT=
+    MONGO_LOCAL_URI=
+    MONGO_LIVE_URI=
+    CLOUDINARY_CLOUD_NAME=
+    CLOUDINARY_API_KEY=
+    CLOUDINARY_API_SECRET=
+    ```
+
+4.  **Run the development server:**
+
     - **Backend**:
       ```bash
       npm run dev
@@ -51,7 +64,7 @@ This is a full-stack web application that allows users to report community issue
       npm start
       ```
 
-5. **Navigate to your application:**
+5.  **Navigate to your application:**
     Open your web browser and go to `http://localhost:3000` for the client, and your backend runs at `http://localhost:5000` (or configured ports).
 
 ## Usage
@@ -60,14 +73,10 @@ This is a full-stack web application that allows users to report community issue
 - **View Issues**: View reported issues on the map, each represented with a marker. Click a marker to see more details.
 - **Permission Handling**: Users will be prompted for location access. Ensure your browser settings allow this for optimal experience.
 
-
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute, please fork the repository and submit a pull request.
 
-
 ## Contact
 
 For any inquiries, please reach out to [dev@zeenomtech.com](mailto:dev@zeenomtech.com).
-
-

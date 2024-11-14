@@ -179,7 +179,7 @@ export default function AddIssue() {
   };
 
   return (
-    <div className='w-full md:w-1/2 mx-auto my-10'>
+    <div className='w-full sm:px-10 md:w-1/2 mx-auto my-10'>
       <form method='post' encType='multipart/form-data' onSubmit={handleFormSubmit}>
         {/* Initial Modal to Inform Users Before Requesting Location */}
         <Modal isOpen={showInitialModal} style={modalStyles} ariaHideApp={false}>

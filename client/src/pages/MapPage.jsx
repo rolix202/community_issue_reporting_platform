@@ -155,7 +155,7 @@ const MapPage = () => {
             </div>
 
             <div className={`bg-gray-100 p-8 w-full lg:w-1/3 ${isMapVisible ? 'hidden' : ''} lg:block`}>
-                <div className="mb-4 text-2xl font-bold text-center lg:text-left">Community Issue Tracker</div>
+                <div className="mb-4 text-2xl font-bold text-center lg:text-left">Fix My Community (Issue Tracker)</div>
                 <div className="mb-8 text-lg text-gray-700">
                     <p>
                         This platform allows the community to report various issues such as potholes, road damage, power outages, and more.

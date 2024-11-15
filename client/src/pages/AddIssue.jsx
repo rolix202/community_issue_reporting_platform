@@ -158,7 +158,7 @@ export default function AddIssue() {
       setTimeout(() => {
         navigate("/");
       }, 3000);
-      
+
     } catch (error) {
       if (error.response) {
         console.error("Server error:", error.response);
@@ -272,7 +272,7 @@ export default function AddIssue() {
                     name="description"
                     value={issuesDetails.description}
                     onChange={handleFormInput}
-                    rows={3}
+                    rows={6}
                     placeholder="Describe the issue in detail. Include any relevant information such as when it started or any previous attempts to address it."
                     minLength={20}
                     maxLength={500}

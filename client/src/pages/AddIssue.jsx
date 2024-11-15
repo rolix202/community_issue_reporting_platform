@@ -46,7 +46,6 @@ export default function AddIssue() {
         (position) => {
           setLat(position.coords.latitude);
           setLong(position.coords.longitude);
-          toast.success("Location access granted!");
         },
         (error) => {
           console.error("Error fetching location:", error);
@@ -155,7 +154,11 @@ export default function AddIssue() {
       toast.success("Issue submitted successfully!");
       setIssuesDetails({ category: "", description: "", state: "", street_address: "" });
       setUploadedImages([]);
-      navigate("/")
+
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+      
     } catch (error) {
       if (error.response) {
         console.error("Server error:", error.response);

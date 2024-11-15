@@ -7,6 +7,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import { statesInNigeria } from '../constants/data';
 import Modal from 'react-modal'; 
 import { useNavigate } from 'react-router-dom'
+import customFetch from '../../utils/customFetch';
 
 // Modal styles
 const modalStyles = {
@@ -37,6 +38,7 @@ export default function AddIssue() {
   const [isLoading, setIsLoading] = useState(false);
   const [showInitialModal, setShowInitialModal] = useState(true); 
   const [showPermissionModal, setShowPermissionModal] = useState(false); 
+  const navigate = useNavigate();
 
   const requestLocationAccess = () => {
     if (navigator.geolocation) {
@@ -144,7 +146,7 @@ export default function AddIssue() {
     });
 
     try {
-      const response = await axios.post("/api/v1/issues", formData, {
+      const response = await customFetch.post("/api/v1/issues", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -4,6 +4,7 @@ import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MapPinIcon, ExclamationCircleIcon, CheckCircleIcon, PhotoIcon, GlobeEuropeAfricaIcon, PencilSquareIcon, TagIcon } from '@heroicons/react/24/solid';
+import customFetch from '../../utils/customFetch';
 
 // Map categories to colors
 const categoryColors = {
@@ -42,7 +43,7 @@ const MapPage = () => {
     useEffect(() => {
         const fetchIssues = async () => {
             try {
-                const response = await axios.get("/api/v1/issues");
+                const response = await customFetch.get("/api/v1/issues");
                 setIssues(response?.data?.data);
             } catch (error) {
                 console.error("Failed to fetch issues", error);

@@ -92,21 +92,24 @@ const MapPage = () => {
                                     <div className="text-sm font-sans w-full">
                                         <div className="flex items-center mb-2">
                                             <TagIcon className="w-5 h-5 text-yellow-600 mr-2" />
-                                            <strong className="text-gray-800">Category: </strong>
+                                            <strong className="text-gray-800 pr-2">Category: </strong>
                                             <span style={{ color: categoryColors[issue.category] || 'gray' }}>
                                                 {toSentenceCase(issue.category)}
                                             </span>
                                         </div>
                                         <div className="flex items-center mb-2">
                                             <PencilSquareIcon className="w-5 h-5 text-yellow-600 mr-2 flex-shrink-0" />
-                                            <strong className="text-gray-800">Description: </strong>
-                                            <span className="text-gray-700 pl-2">
-                                                {toSentenceCase(issue.description)}
-                                            </span>
+                                            <strong className="text-green-500 ">Description: 
+                                                <span className="text-gray-700 pl-2 tracking-wide">
+                                                    {toSentenceCase(issue.description)}
+                                                </span>
+
+                                            </strong>
+                                            
                                         </div>
                                         <div className="flex items-center mb-2">
                                             <GlobeEuropeAfricaIcon className="w-5 h-5 text-yellow-600 mr-2" />
-                                            <strong className="text-gray-800">State:</strong>
+                                            <strong className="text-gray-800 pr-2">State:</strong>
                                             <span style={{ color: issue.state === 'open' ? 'red' : issue.state === 'in progress' ? 'yellow' : 'green' }}>
                                                 {issue.state.charAt(0).toUpperCase() + issue.state.slice(1)}
                                             </span>
@@ -122,7 +125,7 @@ const MapPage = () => {
                                             ) : (
                                                 <ExclamationCircleIcon className="w-5 h-5 text-red-600 mr-2" />
                                             )}
-                                            <strong className="text-gray-800 font-semibold">Status:</strong>
+                                            <strong className="text-gray-800 font-semibold pr-2">Status:</strong>
                                             <span style={{ color: issue.status === 'open' ? 'red' : issue.status === 'resolved' ? 'green' : 'yellow' }}>
                                                 {issue.status}
                                             </span>
@@ -133,7 +136,7 @@ const MapPage = () => {
                                                 <strong className="text-gray-800 font-semibold flex items-center mb-2">Images:</strong>
                                                 <div className="flex flex-wrap gap-2 mt-2">
                                                     {issue.photo_upload.map((image, index) => (
-                                                        <div key={index} className="w-full">
+                                                        <div key={index} className="w-2/5">
                                                             <img
                                                                 src={image.image_secure_url}
                                                                 alt={`Issue image ${index + 1}`}

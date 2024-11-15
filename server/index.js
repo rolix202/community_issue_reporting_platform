@@ -26,11 +26,7 @@ const __dirname = path.dirname(__filename)
 
 app.use(logger("dev"))
 app.use(express.json())
-app.use(cors({
-    origin: process.env.BASE_FRONTEND_URL,
-    methods: 'GET,POST,PUT,DELETE',
-    credentials: true,
-  }));
+app.use(cors())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use("/api/v1/issues", issuesRoute)

@@ -1,5 +1,7 @@
 import express from "express"
 const app = express()
+import * as dotenv from "dotenv"
+dotenv.config()
 import logger from "morgan"
 import cors from "cors"
 import path from "path"

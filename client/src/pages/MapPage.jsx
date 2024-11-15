@@ -64,7 +64,7 @@ const MapPage = () => {
             .map(sentence => sentence.charAt(0).toUpperCase() + sentence.slice(1))
             .join('. ');
     }
-    
+
 
     return (
         <div className="flex flex-col lg:flex-row h-screen">
@@ -75,88 +75,95 @@ const MapPage = () => {
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     />
-                    {issues.map((issue) => (
-                        <Marker
-                            key={issue._id}
-                            position={[issue.latitude, issue.longitude]}
-                            icon={createHeroIcon(categoryColors[issue.category] || 'black')}>
 
-                            <Popup maxWidth={300} minWidth={300}>
-                                <div className="text-sm font-sans w-full">
-                                    {/* Category */}
-                                    <div className="flex items-center mb-2">
-                                        <TagIcon className="w-5 h-5 text-yellow-600 mr-2"/>
-                                        <strong className="text-gray-800">Category: </strong>
-                                        <span className={`font-semibold pl-2 text-${categoryColors[issue.category] || 'gray'}-600`}>
-                                            {toSentenceCase(issue.category)}
-                                        </span>
-                                    </div>
-
-                                    {/* Description */}
-                                    <div className="flex items-center mb-2">
-                                        <PencilSquareIcon className="w-5 h-5 text-yellow-600 mr-2 flex-shrink-0"/>
-                                        <strong className="text-gray-800">Description: </strong>
-                                        <span className="text-gray-700 pl-2">{toSentenceCase(issue.description)}</span>
-                                    </div>
-
-                                    {/* State */}
-                                    <div className="flex items-center mb-2">
-                                        {/* <ExclamationCircleIcon className="w-5 h-5 text-yellow-600 mr-2" /> */}
-                                        <GlobeEuropeAfricaIcon className="w-5 h-5 text-yellow-600 mr-2"/>
-                                        <strong className="text-gray-800">State:</strong>
-                                        <span className={`pl-2 capitalize text-${issue.state === 'open' ? 'red' : issue.state === 'in progress' ? 'yellow' : 'green'}-600`}>
-                                            {issue.state.charAt(0).toUpperCase() + issue.state.slice(1)}
-                                        </span>
-                                    </div>
-
-                                    {/* Address */}
-                                    <div className="flex items-center mb-2">
-                                        <MapPinIcon className="w-5 h-5 text-gray-600 mr-2" />
-                                        <strong className="text-gray-800">Street Address:</strong>
-                                        <span className="text-gray-700 pl-2">{toSentenceCase(issue.street_address)}</span>
-                                    </div>
-
-                                    {/* Status */}
-                                    <div className="flex items-center mb-2">
-                                        {issue.status === 'resolved' ? (
-                                            <CheckCircleIcon className="w-5 h-5 text-green-600 mr-2" />
-                                        ) : (
-                                            <ExclamationCircleIcon className="w-5 h-5 text-red-600 mr-2" />
-                                        )}
-                                        <strong className="text-gray-800 font-semibold">Status:</strong>
-                                        <span className={`pl-2 capitalize text-${issue.status === 'open' ? 'red' : issue.status === 'resolved' ? 'green' : 'yellow'}-600`}>
-                                            {issue.status}
-                                        </span>
-                                    </div>
-
-                                    {/* Images */}
-                                    {issue.photo_upload && issue.photo_upload.length > 0 && (
-                                        <div className="mt-4">
-                                            <strong className="text-gray-800 font-semibold flex items-center mb-2">
-                                                Images:
-                                            </strong>
-                                            <div className="flex flex-wrap gap-2 mt-2">
-                                                {issue.photo_upload.map((image, index) => (
-                                                    <div key={index} className="w-full">
-                                                        <img
-                                                            src={image.image_secure_url}
-                                                            alt={`Issue image ${index + 1}`}
-                                                            className="w-full h-auto object-cover rounded-lg shadow-md cursor-pointer transition-transform transform hover:scale-105"
-                                                            loading="lazy"
-                                                            onClick={() => window.open(image.image_secure_url, "_blank")}
-                                                        />
-                                                    </div>
-                                                ))}
-                                            </div>
+                    {issues && issues.length > 0 ? (
+                        issues.map((issue) => (
+                            <Marker
+                                key={issue._id}
+                                position={[issue.latitude, issue.longitude]}
+                                icon={createHeroIcon(categoryColors[issue.category] || 'black')}>
+    
+                                <Popup maxWidth={300} minWidth={300}>
+                                    <div className="text-sm font-sans w-full">
+                                        {/* Category */}
+                                        <div className="flex items-center mb-2">
+                                            <TagIcon className="w-5 h-5 text-yellow-600 mr-2" />
+                                            <strong className="text-gray-800">Category: </strong>
+                                            <span className={`font-semibold pl-2 text-${categoryColors[issue.category] || 'gray'}-600`}>
+                                                {toSentenceCase(issue.category)}
+                                            </span>
                                         </div>
-                                    )}
-                                </div>
-                            </Popup>
+    
+                                        {/* Description */}
+                                        <div className="flex items-center mb-2">
+                                            <PencilSquareIcon className="w-5 h-5 text-yellow-600 mr-2 flex-shrink-0" />
+                                            <strong className="text-gray-800">Description: </strong>
+                                            <span className="text-gray-700 pl-2">{toSentenceCase(issue.description)}</span>
+                                        </div>
+    
+                                        {/* State */}
+                                        <div className="flex items-center mb-2">
+                                            {/* <ExclamationCircleIcon className="w-5 h-5 text-yellow-600 mr-2" /> */}
+                                            <GlobeEuropeAfricaIcon className="w-5 h-5 text-yellow-600 mr-2" />
+                                            <strong className="text-gray-800">State:</strong>
+                                            <span className={`pl-2 capitalize text-${issue.state === 'open' ? 'red' : issue.state === 'in progress' ? 'yellow' : 'green'}-600`}>
+                                                {issue.state.charAt(0).toUpperCase() + issue.state.slice(1)}
+                                            </span>
+                                        </div>
+    
+                                        {/* Address */}
+                                        <div className="flex items-center mb-2">
+                                            <MapPinIcon className="w-5 h-5 text-gray-600 mr-2" />
+                                            <strong className="text-gray-800">Street Address:</strong>
+                                            <span className="text-gray-700 pl-2">{toSentenceCase(issue.street_address)}</span>
+                                        </div>
+    
+                                        {/* Status */}
+                                        <div className="flex items-center mb-2">
+                                            {issue.status === 'resolved' ? (
+                                                <CheckCircleIcon className="w-5 h-5 text-green-600 mr-2" />
+                                            ) : (
+                                                <ExclamationCircleIcon className="w-5 h-5 text-red-600 mr-2" />
+                                            )}
+                                            <strong className="text-gray-800 font-semibold">Status:</strong>
+                                            <span className={`pl-2 capitalize text-${issue.status === 'open' ? 'red' : issue.status === 'resolved' ? 'green' : 'yellow'}-600`}>
+                                                {issue.status}
+                                            </span>
+                                        </div>
+    
+                                        {/* Images */}
+                                        {issue.photo_upload && issue.photo_upload.length > 0 && (
+                                            <div className="mt-4">
+                                                <strong className="text-gray-800 font-semibold flex items-center mb-2">
+                                                    Images:
+                                                </strong>
+                                                <div className="flex flex-wrap gap-2 mt-2">
+                                                    {issue.photo_upload.map((image, index) => (
+                                                        <div key={index} className="w-full">
+                                                            <img
+                                                                src={image.image_secure_url}
+                                                                alt={`Issue image ${index + 1}`}
+                                                                className="w-full h-auto object-cover rounded-lg shadow-md cursor-pointer transition-transform transform hover:scale-105"
+                                                                loading="lazy"
+                                                                onClick={() => window.open(image.image_secure_url, "_blank")}
+                                                            />
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                </Popup>
+    
+    
+    
+                            </Marker>
+                        ))
+                    ) : (
+                        <p>No issues found or data is still loading.</p>
+                    )}
 
-
-
-                        </Marker>
-                    ))}
+                   
                 </MapContainer>
             </div>
 

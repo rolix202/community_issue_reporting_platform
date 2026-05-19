@@ -31,6 +31,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use("/api/v1/issues", issuesRoute)
 
+app.get("/health", (req, res) => {
+    res.status(200).json({message: "Server running succesfully"})
+})
+
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {

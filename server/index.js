@@ -11,7 +11,7 @@ import mongoose from "mongoose"
 
 import issuesRoute from "./routes/issuesRoute.js"
 
-const db = process.env.NODE_ENV === "development" ? process.env.MONGO_LOCAL_URI : process.env.MONGO_LIVE_URI
+const db = process.env.NODE_ENV === "development" ? process.env.MONGO_LOCAL_URI : process.env.MONGO_URI
 
 async function main(){
     const conn = mongoose.connect(db)
